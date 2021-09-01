@@ -27,7 +27,9 @@ const displaySearchResult = (docs) => {
                         <div class="card-body">
                             <h3 class="card-title">${doc.title.slice(0, 8)}</h3>
                             <h6 class="card-title text-warning">${doc.author_name[0]}</h6>
-                            <h6 class="card-title">publisher: ${doc.publisher[0]}</h6>
+                            <h6 class="card-title">Publisher: ${doc.publisher[0]}</h6>
+                            <h6 class="card-title">Publish Year: ${doc.publish_year[0]}</h6>
+                            
                             
                         </div>
                     </div>
