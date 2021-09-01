@@ -48,3 +48,14 @@ const displaySearchResult = (docs) => {
         searchResult.appendChild(div);
     });
 };
+
+// search  hit enter
+const searchField = document.getElementById('search-field');
+const buttonSearch = document.getElementById('buttonSearch');
+searchField.addEventListener('keypress', (event) => {
+    // console.log('keyb', event.key);
+
+    if (event.key === 'Enter') {
+        buttonSearch.click();
+    }
+});
