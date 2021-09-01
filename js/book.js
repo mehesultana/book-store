@@ -1,3 +1,4 @@
+const searchResult = document.getElementById('search-result');
 // loading spinner
 const loadingSpinner = document.getElementById('loadingSpinner');
 const toggleSpinner = (show) => {
@@ -8,6 +9,7 @@ const toggleSpinner = (show) => {
 };
 
 const searchBook = () => {
+    searchResult.textContent = '';
     toggleSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -26,7 +28,7 @@ const searchBook = () => {
 const displaySearchResult = (docs) => {
     toggleSpinner(false);
     console.log(docs);
-    const searchResult = document.getElementById('search-result');
+
     docs?.forEach((doc) => {
         console.log(doc.author_name[0]);
         const { title } = doc.title;
