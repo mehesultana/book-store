@@ -51,7 +51,7 @@ const displaySearchResult = (bookData) => {
     }
 
     const totalDiv = document.createElement('div');
-    totalDiv.innerHTML = `<h5>total result : ${total}</h5>`;
+    totalDiv.innerHTML = `<h5>Total books found : ${total}</h5>`;
 
     totalResult.appendChild(totalDiv);
 
@@ -62,15 +62,16 @@ const displaySearchResult = (bookData) => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card h-100">
+        <div class="book card h-100">
                 <img src="https://covers.openlibrary.org/b/id/${doc?.cover_i}-M.jpg" 
                     class="card-img-top " alt="Not found" />
                 <div class="card-body">
                     <h3 class="card-title">${doc.title.slice(0, 8)}</h3>
-                    <h6 class="card-title text-warning">Author: ${doc.author_name?.[0]}</h6>
-                    <h6 class="card-title">publish date: ${doc.publish_date}</h6>
-                    <h6 class="card-title">Publisher: ${doc.publisher?.[0]}</h6>
+                    <h6 class="card-title text-danger">Author: ${doc.author_name?.[0]}</h6>
+                    <h6 class="card-title">publish date: ${doc.publish_date[1]}</h6>
                     <h6 class="card-title">First Publish: ${doc.publish_year?.[0]}</h6>
+                    <h6 class="card-title">Publisher: ${doc.publisher?.[0]}</h6>
+                    
                             
                 </div>
         </div>
