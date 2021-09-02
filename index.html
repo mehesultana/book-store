@@ -11,6 +11,10 @@
         <main class="container">
             <h1 class="text-center mb-5 mt-5">Welcome to The Book Store</h1>
 
+            <!-- error message -->
+            <section>
+                <p id="errorMessage" class="text-danger text-center">Something Went wrong. Please Try Again Later!</p>
+            </section>
             <!-- search area -->
             <div class="input-group mb-3 w-50 mx-auto">
                 <input id="search-field" type="text" class="form-control" placeholder="Search for a book....." aria-label="Recipient's username" />
@@ -23,6 +27,15 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
+
+            <!-- empty error -->
+            <section>
+                <div id="emptyError"></div>
+            </section>
+            <!-- search error -->
+            <section>
+                <div id="searchError"></div>
+            </section>
 
             <!-- search result -->
             <div id="total-result" class="text-center"></div>
