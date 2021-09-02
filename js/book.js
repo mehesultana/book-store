@@ -51,11 +51,13 @@ const displaySearchResult = (bookData) => {
     }
 
     const totalDiv = document.createElement('div');
-    totalDiv.innerHTML = `<h5>Total books found : ${total}</h5>`;
+    totalDiv.innerHTML = `
+            <h5 class="text-success bg-light fw-bold p-2 ">Total books found : ${total}</h5> 
+        `;
 
     totalResult.appendChild(totalDiv);
 
-    const books = bookData.docs;
+    const books = bookData.docs.slice(7, 20);
     // console.log(books);
 
     books?.forEach((doc) => {
@@ -92,11 +94,11 @@ searchField.addEventListener('keypress', (event) => {
 //  Empty search error handle
 const emptyErrorHandle = () => {
     emptyError.innerHTML = `
-    <p class="text-danger text-center">Warning! Search field is empty! Type something...</p>`;
+    <p class="text-danger text-center fw-bold ">Warning! Search field is empty! Type something...</p>`;
 };
 
 // 404 NOT found error
 const notFoundHandler = () => {
     searchError.innerHTML = `
-	<p class="text-danger text-center">404! Not Found! Sorry, We Cannot Find Your Team. Please try again.<p>`;
+	<p class="text-danger text-center fw-bold ">404! Not Found! Sorry, We Cannot Find Your Team. Please try again.<p>`;
 };
