@@ -57,7 +57,7 @@ const displaySearchResult = (bookData) => {
 
     totalResult.appendChild(totalDiv);
 
-    const books = bookData.docs.slice(7, 20);
+    const books = bookData.docs.slice(0, 20);
     // console.log(books);
 
     books?.forEach((doc) => {
@@ -68,7 +68,7 @@ const displaySearchResult = (bookData) => {
                 <img src="https://covers.openlibrary.org/b/id/${doc?.cover_i}-M.jpg" 
                     class="card-img-top " alt="Not found" />
                 <div class="card-body">
-                    <h3 class="card-title">${doc.title.slice(0, 8)}</h3>
+                    <h3 class="card-title">${doc.title}</h3>
                     <h6 class="card-title text-danger">Author: ${doc.author_name?.[0]}</h6>
                     <h6 class="card-title">publish date: ${doc.publish_date?.[0]}</h6>
                     <h6 class="card-title">First Publish: ${doc.publish_year?.[0]}</h6>
@@ -100,5 +100,5 @@ const emptyErrorHandle = () => {
 // 404 NOT found error
 const notFoundHandler = () => {
     searchError.innerHTML = `
-	<p class="text-danger text-center fw-bold ">404! Not Found! Sorry, We Cannot Find Your Team. Please try again.<p>`;
+	<p class="text-danger text-center fw-bold ">404! Not Found! Sorry, We Cannot Find Your Book. Please try again.<p>`;
 };
