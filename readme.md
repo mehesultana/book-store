@@ -1,3 +1,9 @@
+# book-store
+
+### [Live Site](https://thebook-store.netlify.app/)
+
+![book-store](https://github.com/mehesultana/book-store/blob/master/images/cover.JPG)
+
 API Links
 Book Search
 URL Format: http://openlibrary.org/search.json?q=${searchText}
