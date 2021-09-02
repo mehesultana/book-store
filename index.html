@@ -8,6 +8,37 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
     </head>
     <body class="bg-success p-2 text-dark bg-opacity-25">
+        <header>
+            <section>
+                <nav class="navbar navbar-expand-lg navbar-light container">
+                    <div class="container-fluid">
+                        <a class="navbar-brand text-success" href="#">The Book Store</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav align-items-end">
+                                <li class="nav-item mx-1">
+                                    <a class="nav-link active text-success" href="#">Home</a>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <a class="nav-link active text-success" href="#">Shops</a>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <a class="nav-link active text-success" href="#">News</a>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <a class="nav-link active text-success" href="#">Contact</a>
+                                </li>
+                                <li class="nav-item mx-5">
+                                    <button type="button" class="btn btn-success px-3">Log in</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+        </header>
         <main class="container">
             <h1 class="text-center mb-5 mt-5">Welcome to The Book Store</h1>
 
@@ -43,6 +74,7 @@
             <!-- book cover -->
             <div id="display-cover" class="row row-cols-1 row-cols-md-3 g-4"></div>
         </main>
+
         <!-- script -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
         <script src="./js/book.js"></script>
