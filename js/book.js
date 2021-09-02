@@ -5,7 +5,6 @@ const loadingSpinner = document.getElementById('loadingSpinner');
 const searchField = document.getElementById('search-field');
 const buttonSearch = document.getElementById('buttonSearch');
 const searchError = document.getElementById('searchError');
-const errorMessage = document.getElementById('errorMessage');
 const emptyError = document.getElementById('emptyError');
 
 // loading spinner
@@ -25,6 +24,7 @@ const searchBook = async () => {
     searchResult.textContent = '';
     totalResult.textContent = '';
     emptyError.innerHTML = '';
+    searchError.textContent = '';
     if (searchText === '') {
         toggleSpinner(false);
         emptyErrorHandle();
@@ -34,18 +34,21 @@ const searchBook = async () => {
         fetch(url)
             .then((res) => res.json())
             .then((data) => displaySearchResult(data))
-            .catch((error) => displayError(error));
+            .catch((error) => console.log(error));
     }
 };
 
 //search result
 const displaySearchResult = (bookData) => {
     toggleSpinner(false);
-
+    searchError.textContent = '';
     // console.log(bookData);
-    errorMessage.style.display = 'none';
+
     const total = bookData.numFound;
     // console.log(total);
+    if (total === 0) {
+        notFoundHandler();
+    }
 
     const totalDiv = document.createElement('div');
     totalDiv.innerHTML = `<h5>total result : ${total}</h5>`;
@@ -64,10 +67,10 @@ const displaySearchResult = (bookData) => {
                     class="card-img-top " alt="Not found" />
                 <div class="card-body">
                     <h3 class="card-title">${doc.title.slice(0, 8)}</h3>
-                    <h6 class="card-title text-warning">${doc.author_name?.[0]}</h6>
+                    <h6 class="card-title text-warning">Author: ${doc.author_name?.[0]}</h6>
+                    <h6 class="card-title">publish date: ${doc.publish_date}</h6>
                     <h6 class="card-title">Publisher: ${doc.publisher?.[0]}</h6>
-                    <h6 class="card-title">Publish Year: ${doc.publish_year?.[0]}</h6>
-                            
+                    <h6 class="card-title">First Publish: ${doc.publish_year?.[0]}</h6>
                             
                 </div>
         </div>
@@ -88,17 +91,11 @@ searchField.addEventListener('keypress', (event) => {
 //  Empty search error handle
 const emptyErrorHandle = () => {
     emptyError.innerHTML = `
-      <p class="text-danger text-center">Warning! Search field is empty! Type something...</p>`;
+    <p class="text-danger text-center">Warning! Search field is empty! Type something...</p>`;
 };
 
 // 404 NOT found error
 const notFoundHandler = () => {
     searchError.innerHTML = `
 	<p class="text-danger text-center">404! Not Found! Sorry, We Cannot Find Your Team. Please try again.<p>`;
-};
-
-// display error
-errorMessage.style.display = 'none';
-const displayError = () => {
-    errorMessage.style.display = 'block';
 };
