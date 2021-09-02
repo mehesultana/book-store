@@ -68,7 +68,7 @@ const displaySearchResult = (bookData) => {
                 <div class="card-body">
                     <h3 class="card-title">${doc.title.slice(0, 8)}</h3>
                     <h6 class="card-title text-danger">Author: ${doc.author_name?.[0]}</h6>
-                    <h6 class="card-title">publish date: ${doc.publish_date[1]}</h6>
+                    <h6 class="card-title">publish date: ${doc.publish_date?.[0]}</h6>
                     <h6 class="card-title">First Publish: ${doc.publish_year?.[0]}</h6>
                     <h6 class="card-title">Publisher: ${doc.publisher?.[0]}</h6>
                     
