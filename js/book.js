@@ -4,6 +4,9 @@ const totalResult = document.querySelector('#total-result');
 const loadingSpinner = document.getElementById('loadingSpinner');
 const searchField = document.getElementById('search-field');
 const buttonSearch = document.getElementById('buttonSearch');
+const searchError = document.getElementById('searchError');
+const errorMessage = document.getElementById('errorMessage');
+const emptyError = document.getElementById('emptyError');
 
 // loading spinner
 const toggleSpinner = (show) => {
@@ -14,8 +17,6 @@ const toggleSpinner = (show) => {
 
 // get data and search book
 const searchBook = async () => {
-    toggleSpinner(true);
-
     const searchText = searchField.value;
     //console.log(searchText);
 
@@ -23,20 +24,26 @@ const searchBook = async () => {
     searchField.value = '';
     searchResult.textContent = '';
     totalResult.textContent = '';
-
-    const url = `https://openlibrary.org/search.json?q=${searchText}`;
-
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => displaySearchResult(data))
-        .catch((error) => console.log(error));
+    emptyError.innerHTML = '';
+    if (searchText === '') {
+        toggleSpinner(false);
+        emptyErrorHandle();
+    } else {
+        toggleSpinner(true);
+        const url = `https://openlibrary.org/search.json?q=${searchText}`;
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => displaySearchResult(data))
+            .catch((error) => displayError(error));
+    }
 };
 
 //search result
 const displaySearchResult = (bookData) => {
     toggleSpinner(false);
-    // console.log(bookData);
 
+    // console.log(bookData);
+    errorMessage.style.display = 'none';
     const total = bookData.numFound;
     // console.log(total);
 
@@ -77,3 +84,21 @@ searchField.addEventListener('keypress', (event) => {
         buttonSearch.click();
     }
 });
+
+//  Empty search error handle
+const emptyErrorHandle = () => {
+    emptyError.innerHTML = `
+      <p class="text-danger text-center">Warning! Search field is empty! Type something...</p>`;
+};
+
+// 404 NOT found error
+const notFoundHandler = () => {
+    searchError.innerHTML = `
+	<p class="text-danger text-center">404! Not Found! Sorry, We Cannot Find Your Team. Please try again.<p>`;
+};
+
+// display error
+errorMessage.style.display = 'none';
+const displayError = () => {
+    errorMessage.style.display = 'block';
+};
