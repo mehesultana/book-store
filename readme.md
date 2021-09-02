@@ -24,8 +24,6 @@ Book cover image url: Medium
 
 ### Example: https://covers.openlibrary.org/b/id/554106-M.jpg
 
-### Author Detail:
-
-https://openlibrary.org/authors/{authhorKey}.json
+### Author Detail: https://openlibrary.org/authors/{authhorKey}.json
 
 ### Example: https://openlibrary.org/authors/OL62134A.json
